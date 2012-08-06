@@ -1,15 +1,16 @@
-var a = {
-    init: function () {
-        'use strict';
-        var myregexp = /href="([^"]+)"/ig,
-            mystring = 'nyuNYU<a title="katt ide" HREF="http://kocsan.hu">Cica</a>kedsadas <a href="www.index.hu">Hello</a>',
-            result;
+(function (document, window) {
+    'use strict';
+    var a = {
+        init: function () {
+            var myregexp = /href="([^"]+)"/ig,
+                mystring = document.body.innerHTML,
+                result;
 
-        do {
-            result = myregexp.exec(mystring)
-            console.log(result);
-        } while(result);
-    }
-};
+            for (result = false; result = myregexp.exec(mystring);) {
+                window.console.log(result);
+            } while (result);
+        }
+    };
 
-a.init();
+    a.init();
+}(document, window))
